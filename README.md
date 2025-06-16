@@ -117,7 +117,7 @@ Below are the main API endpoints you can use to test the core features of this a
 - `POST /auth/login` — Authenticate user and receive JWT
 - `POST /auth/register` — Register a new user
 
-### User Endpoints( **_under implementation_**)
+### User Endpoints
 
 - `GET /users` — Get all users (Admin only)
 - `GET /users/:id` — Get user by ID (Authenticated user can get their profile)
