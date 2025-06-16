@@ -18,7 +18,7 @@ export class TasksService {
   ): Promise<Task> {
     try {
       const currentUser = await this.userModel.find({ email: user.sub });
-      console.log(currentUser);
+
       const createdtask = await this.taskModel.create({
         title: createTaskDto.title,
         description: createTaskDto.description,
