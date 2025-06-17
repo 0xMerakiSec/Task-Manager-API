@@ -45,7 +45,18 @@ export class UsersService {
       );
     }
   }
-
+  async findAll(): Promise<
+    | {
+        data: User[];
+        total: number;
+        page: number;
+        limit: number;
+        totalPages: number;
+      }
+    | undefined
+  > {
+    return;
+  }
   async create(userData: CreateUserDto) {
     try {
       const user = await this.userModel.findOne({ email: userData.email });

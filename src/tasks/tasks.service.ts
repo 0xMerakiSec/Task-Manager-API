@@ -6,11 +6,13 @@ import { Model } from 'mongoose';
 import { CreateTaskDto, PaginationDto } from './dto';
 import * as mongoose from 'mongoose';
 import { User } from 'src/schemas/users/user.schema';
+import { TasksGateway } from './tasks.gateway';
 @Injectable()
 export class TasksService {
   constructor(
     @InjectModel(Task.name) private taskModel: Model<Task>,
     @InjectModel(User.name) private userModel: Model<User>,
+    private readonly taskGateway: TasksGateway,
   ) {}
   async create(
     createTaskDto: CreateTaskDto,
@@ -25,6 +27,7 @@ export class TasksService {
         status: createTaskDto.status,
         userId: currentUser[0]._id,
       });
+      this.taskGateway.server.emit('taskCreated', createdtask);
       return createdtask;
     } catch (error) {
       console.log(error);
@@ -103,6 +106,7 @@ export class TasksService {
           HttpStatus.NOT_FOUND,
         );
       }
+      this.taskGateway.server.emit('taskUpdated', updatedTask);
       return updatedTask;
     } catch (error) {
       if (error instanceof HttpException) {
@@ -122,6 +126,7 @@ export class TasksService {
 
   async delete(id: string) {
     try {
+      this.taskGateway.server.emit('taskDeleted', { id });
       return await this.taskModel.deleteOne({ _id: id });
     } catch (error) {
       if (error instanceof HttpException) {
