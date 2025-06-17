@@ -36,6 +36,16 @@ A professional, production-ready Task Manager API built with the NestJS framewor
 - JWT (JSON Web Token)
 - Yarn
 
+## Updates
+
+### Broadcast Task updates
+
+Implemented a Realtime feature using the webSockets
+
+### Secure connection using the Jwt-token
+
+Restricts websocket access to authenticated users
+
 ## Project setup
 
 ```bash
