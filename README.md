@@ -38,13 +38,10 @@ A professional, production-ready Task Manager API built with the NestJS framewor
 
 ## Updates
 
-### Broadcast Task updates
-
-Implemented a Realtime feature using the webSockets
-
-### Secure connection using the Jwt-token
-
-Restricts websocket access to authenticated users
+### Real time feature using WebSockets
+  - Implemented a Realtime feature using the webSockets
+  - Secure connection using the Jwt-token
+  - Restricts websocket access to authenticated users
 
 ## Project setup
 
